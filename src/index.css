@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body {
+  font-family: "Inconsolata", monospace;
+  width: 100%;
+}
+
+/* .background {
+  width: 100%;
+  height: 100vh;
+  background: url("/public/ticket_items/images/background-mobile.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.background-design {
+  width: 100%;
+  height: 100vh;
+}
+
+.background-design img {
+  width: 100%;
+} */
+
+@media only screen and (min-width: 768px) {
+  /* .background {
+    background: url("/public/ticket_items/images/background-desktop.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  } */
+}
