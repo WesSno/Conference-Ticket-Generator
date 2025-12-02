@@ -1,0 +1,132 @@
+import React, { useRef } from "react";
+
+function TicketForm(props) {
+  const {
+    isDragging,
+    avatarPreview,
+    fullName,
+    email,
+    github,
+    handleDragOver,
+    handleDragLeave,
+    handleDrop,
+    handleSubmit,
+    handleRemoveImage,
+    handleFileChange,
+    handleChange,
+    errors,
+  } = props;
+
+  const fileInputRef = useRef(null);
+
+  return (
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      encType="multipart/form-data"
+      noValidate
+      className="form"
+    >
+      <div>
+        <label className="avatar-title">Upload Avatar</label>
+
+        <div
+          className={`avatar-drop ${isDragging ? "dragging" : ""}`}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={
+            !avatarPreview ? () => fileInputRef.current.click() : undefined
+          }
+        >
+          {avatarPreview ? (
+            <div className="avatar-preview-area">
+              <div className="preview">
+                <img src={avatarPreview} alt="avatar preview" />
+
+                <div className="avatar-actions">
+                  <button type="button" onClick={handleRemoveImage}>
+                    Remove Image
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current.click()}
+                  >
+                    Change Image
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="prompt-area">
+              <div className="upload-icon-bg">
+                <img
+                  src="/ticket_items/images/icon-upload.svg"
+                  alt="upload icon"
+                />
+              </div>
+
+              <p>Drag & drop or click to upload</p>
+            </div>
+          )}
+
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            className="file-input"
+          />
+        </div>
+
+        {errors?.avatar && <div className="error">{errors.avatar}</div>}
+
+        <div className="small">
+          Upload your photo (JPG or PNG, max size: 2MB)
+        </div>
+      </div>
+
+      <div className="fullName">
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="fullName"
+          value={fullName}
+          onChange={handleChange}
+        />
+        {errors?.fullName && <div className="error">{errors.fullName}</div>}
+      </div>
+
+      <div className="email">
+        <label>Email Address</label>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          placeholder="example@email.com"
+          onChange={handleChange}
+        />
+        {errors?.email && <div className="error">{errors.email}</div>}
+      </div>
+
+      <div className="github">
+        <label>Github username</label>
+        <input
+          type="text"
+          name="github"
+          value={github}
+          placeholder="@yourusername"
+          onChange={handleChange}
+        />
+        {errors?.github && <div className="error">{errors.github}</div>}
+      </div>
+
+      <div>
+        <button type="submit" className="submit-btn">
+          Generate My Ticket
+        </button>
+      </div>
+    </form>
+  );
+}
+
+export default TicketForm;
