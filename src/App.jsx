@@ -30,13 +30,6 @@ class App extends React.Component {
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-
-    if (!this.state.locationAsked) {
-      this.setState({ locationAsked: true });
-      this.getUserLocation().then((loc) => {
-        this.setState({ userLocation: loc });
-      });
-    }
   }
 
   handleFileChange(e) {
