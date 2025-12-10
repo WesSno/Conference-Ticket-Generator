@@ -81,6 +81,7 @@ function TicketForm(props) {
         {errors?.avatar && <div className="error">{errors.avatar}</div>}
 
         <div className="small">
+          <img src="/ticket_items/images/icon-info.svg" alt="Info icon" />
           Upload your photo (JPG or PNG, max size: 2MB)
         </div>
       </div>
@@ -92,8 +93,39 @@ function TicketForm(props) {
           name="fullName"
           value={fullName}
           onChange={handleChange}
+          className={errors?.fullName ? "input-error" : ""}
         />
-        {errors?.fullName && <div className="error">{errors.fullName}</div>}
+        {errors?.fullName && (
+          <div className="error">
+            <svg
+              className="info-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"
+              />
+              <path
+                fill="currentColor"
+                d="M8.004 10.462V7.596ZM8 5.57v-.042Z"
+              />
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.004 10.462V7.596M8 5.569v-.042"
+              />
+            </svg>
+
+            {errors.fullName}
+          </div>
+        )}
       </div>
 
       <div className="email">
@@ -104,8 +136,38 @@ function TicketForm(props) {
           value={email}
           placeholder="example@email.com"
           onChange={handleChange}
+          className={errors?.email ? "input-error" : ""}
         />
-        {errors?.email && <div className="error">{errors.email}</div>}
+        {errors?.email && (
+          <div className="error">
+            <svg
+              className="info-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"
+              />
+              <path
+                fill="currentColor"
+                d="M8.004 10.462V7.596ZM8 5.57v-.042Z"
+              />
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.004 10.462V7.596M8 5.569v-.042"
+              />
+            </svg>
+            {errors.email}
+          </div>
+        )}
       </div>
 
       <div className="github">
@@ -116,8 +178,38 @@ function TicketForm(props) {
           value={github}
           placeholder="@yourusername"
           onChange={handleChange}
+          className={errors?.github ? "input-error" : ""}
         />
-        {errors?.github && <div className="error">{errors.github}</div>}
+        {errors?.github && (
+          <div className="error">
+            <svg
+              className="info-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"
+              />
+              <path
+                fill="currentColor"
+                d="M8.004 10.462V7.596ZM8 5.57v-.042Z"
+              />
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.004 10.462V7.596M8 5.569v-.042"
+              />
+            </svg>
+            {errors.github}
+          </div>
+        )}
       </div>
 
       <div>

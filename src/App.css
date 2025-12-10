@@ -131,7 +131,8 @@ p {
   color: var(--neutral-300);
   transition: all 0.2s;
   margin-top: 10px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
@@ -151,9 +152,24 @@ p {
   display: none;
 }
 
+.avatar-preview-area .preview img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center;
+}
+
+.prompt-area,
+.preview {
+  display: grid;
+  gap: 10px;
+}
+
 .upload-icon-bg {
   margin: 0 auto;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   width: 40px;
@@ -172,7 +188,8 @@ p {
   font-family: "Inconsolata", monospace;
   font-size: 10px;
   font-weight: 400;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 2px;
@@ -187,6 +204,9 @@ p {
 }
 
 .small {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   margin: 5px 0 10px 0;
   font-size: 12px;
   color: var(--neutral-700);
@@ -209,12 +229,33 @@ p {
 .fullName input,
 .email input,
 .github input {
-  background: rgba(255, 255, 255, 0.15);
+  font-family: "Inconsolata", monospace;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  border: 1px solid var(--neutral-300);
-  padding: 15px 15px;
   border-radius: 10px;
+  padding: 15px;
+  color: var(--neutral-0);
+}
+
+.fullName input:-webkit-autofill,
+.email input:-webkit-autofill,
+.github input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-text-fill-color: var(--neutral-0) !important;
+  color: var(--neutral-0) !important;
+  backdrop-filter: blur(2px) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+.fullName input:-webkit-autofill:focus,
+.email input:-webkit-autofill:focus,
+.github input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--neutral-0) !important;
 }
 
 .email input::placeholder,
@@ -236,13 +277,9 @@ p {
   cursor: pointer;
   transition: 0.2s ease;
 }
+
 .small .submit-btn:hover {
   background-color: var(--orange-700);
-}
-
-.error {
-  font-size: 0.8rem;
-  color: var(--orange-700);
 }
 
 .line-bottom {
@@ -286,13 +323,6 @@ p {
   line-height: 40px;
 }
 
-.ticket-preview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
 .colored-name {
   background: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
   -webkit-background-clip: text;
@@ -301,23 +331,106 @@ p {
   color: transparent;
 }
 
+.colored-email {
+  color: hsl(7, 88%, 67%);
+}
+
 .emailed-text {
   font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: 400;
   max-width: 420px;
   margin: 0 auto;
   text-align: center;
+  align-self: center;
+  margin: 20px 0 30px 0;
+}
+
+.ticket-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.ticket {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 7 / 3;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.ticket::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/ticket_items/images/pattern-ticket.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transform: scale(1);
+  z-index: 0;
+}
+
+.ticket > * {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-ticket {
+  position: absolute;
+  top: 5%;
+  left: 8%;
+  display: flex;
+  gap: 10px;
+}
+
+.logo-ticket img {
+  width: clamp(25px, 3vw, 35px);
+  height: auto;
+}
+
+.logo-ticket .nameanddate {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.nameanddate h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 1.5rem);
+  margin: 0;
+}
+
+.nameanddate .date {
+  font-size: clamp(0.5rem, 2vw, 0.7rem);
+  color: hsl(252, 6%, 83%);
 }
 
 .avatar-section {
   display: flex;
   align-items: center;
+  position: absolute;
+  bottom: 6%;
+  left: 8%;
   gap: 5px;
+}
+
+.avatar-section img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
 }
 
 .avatar-details {
   display: grid;
-  gap: 5px;
+  grid-template-rows: 1px 30px 25px;
+  grid-row: 1 / 3;
+  gap: 0px;
+  margin: 0;
   text-align: left;
 }
 
@@ -325,13 +438,44 @@ p {
   width: 17px;
 }
 
-.avatar-details h3 {
-  font-size: 25px;
+.avatar-details .name {
+  font-size: clamp(1rem, 2vw + 1rem, 1.5rem);
   font-weight: 400;
   margin: 0;
-  letter-spacing: 0;
+  grid-row: 2 / 3;
 }
 
+.avatar-details p {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: clamp(0.5rem, 2vw, 0.8rem);
+  color: hsl(252, 6%, 83%);
+  grid-row: 3 / 4;
+}
+
+.ticket-id {
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  top: 65%;
+  right: 10%;
+  transform: rotate(90deg);
+  transform-origin: top right;
+  color: hsla(0, 0%, 56%, 1);
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  color: var(--orange-500);
+}
+
+input.input-error {
+  border: 1px solid var(--orange-500);
+}
 @media only screen and (min-width: 768px) {
   .app {
     background: url("/ticket_items/images/background-tablet.png");
