@@ -28,7 +28,7 @@ function ShowTicket(props) {
           <div className="avatar-section">
             <img src={avatarPreview} alt="avatar image" />
             <div className="avatar-details">
-              <h3 className="name">{fullName}</h3>{" "}
+              <h3 className="name">{fullName}</h3>
               <p>
                 <img
                   src="/ticket_items/images/icon-github.svg"

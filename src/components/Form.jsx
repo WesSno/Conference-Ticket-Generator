@@ -87,13 +87,14 @@ function TicketForm(props) {
       </div>
 
       <div className="fullName">
-        <label>Full Name</label>
+        <label htmlFor="fullName">Full Name</label>
         <input
           type="text"
           name="fullName"
           value={fullName}
           onChange={handleChange}
           className={errors?.fullName ? "input-error" : ""}
+          id="fullName"
         />
         {errors?.fullName && (
           <div className="error">
@@ -129,7 +130,7 @@ function TicketForm(props) {
       </div>
 
       <div className="email">
-        <label>Email Address</label>
+        <label htmlFor="email">Email Address</label>
         <input
           type="email"
           name="email"
@@ -137,6 +138,7 @@ function TicketForm(props) {
           placeholder="example@email.com"
           onChange={handleChange}
           className={errors?.email ? "input-error" : ""}
+          id="email"
         />
         {errors?.email && (
           <div className="error">
@@ -171,7 +173,7 @@ function TicketForm(props) {
       </div>
 
       <div className="github">
-        <label>Github username</label>
+        <label htmlFor="github">Github username</label>
         <input
           type="text"
           name="github"
@@ -179,6 +181,7 @@ function TicketForm(props) {
           placeholder="@yourusername"
           onChange={handleChange}
           className={errors?.github ? "input-error" : ""}
+          id="github"
         />
         {errors?.github && (
           <div className="error">
